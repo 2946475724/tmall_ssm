@@ -4,7 +4,7 @@
 
 body {
 	font-size: 12px;
-	font-family: Arial;
+	font-family:Arial;
 	min-width:1024px;
 /* 	width:1920px; */
 }
@@ -24,6 +24,17 @@ nav.top {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: #e7e7e7;
+}
+
+div.top_middle{
+	max-width:1024px;
+	margin:0px auto;
+}
+
+div.simpleSearchOutDiv{
+	max-width:1024px;
+	margin:0px auto;
+	position:relative;
 }
 
 .redColor {
@@ -245,8 +256,8 @@ img.catear {
 
 img.logo {
 	position: absolute;
-	left: 0px;
-	top: 30px;
+	left: -40px;
+	top: -50px;
 /* 	z-index:-1; */
 }
 
@@ -347,8 +358,9 @@ div.horizontal_line{
 
 div.footer_desc {
 	padding-top: 30px;
-	margin: 20px auto;
+	margin: 0px auto;
 	max-width:1024px;
+
 }
 
 div.footer div.copyright div.white_link a {
@@ -360,7 +372,6 @@ div.footer div.copyright div.white_link {
 	padding: 10px 0px;
 	margin-left: 10px;
 }
-
 
 div.footer_desc div.descColumn {
 	width: 20%;
@@ -386,15 +397,12 @@ div.copyright {
 	border-top-color: solid;
 	border-top-color: #C40000;
 	margin-top:20px;
-
-
 }
-
 div.coptyrightMiddle{
-	 width:1024px;
-	 margin:0px auto;
-	 text-align:left;
-	 position:relative;
+	width:1024px;
+	margin:0px auto;
+	text-align:left;
+	position:relative;
 }
 
 img.cateye {
@@ -621,7 +629,7 @@ div.productUnit span.productReview {
 div.productUnit a.productLink {
 	margin: 10px 0px;
 	color: #333333;
-	font: 0.8em;
+	font-size: 0.8em;
 	display: block;
 }
 
@@ -633,7 +641,7 @@ div.productUnit a.productLink:hover {
 div.productUnit a.tmallLink {
 	margin: 10px 0px;
 	color: #999999;
-	font: 0.8em;
+	font-size: 0.8em;
 	display: block;
 	text-decoration: underline;
 }
@@ -1025,7 +1033,7 @@ span.productReviewTopReviewLinkNumber {
 }
 
 div.productDetailImagesPart img {
-	display: block; margin 20px 0px;
+	display: block; margin: 20px 0px;
 	width: 790px;
 }
 
@@ -1318,13 +1326,13 @@ textarea.leaveMessageTextarea {
 }
 
 span.leaveMessageText {
-	display: inilne-block;
+	display: inline-block;
 	margin-right: 10px;
 	float: left;
 }
 
 span.leaveMessageTextareaSpan {
-	display: inilne-block;
+	display: inline-block;
 }
 
 div.orderItemTotalSumDiv {
@@ -1610,7 +1618,6 @@ div.cartFoot button {
 	background-color: #AAAAAA;
 	border: 0px solid #AAAAAA;
 	color: white;
-	height: height%;
 	width: 120px;
 	height: 50px;
 	font-size: 20px;

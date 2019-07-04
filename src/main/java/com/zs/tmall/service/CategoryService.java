@@ -10,7 +10,7 @@ public interface CategoryService {
      * 查询总数
      * @return
      */
-    int total();
+//    int total();
 
     /**
      * 分页查询

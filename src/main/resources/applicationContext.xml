@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--启动对注解的识别-->
     <context:annotation-config />
     <context:component-scan base-package="com.zs.tmall.service" />
+
+    <!--配置自动扫描的包-->
+    <!--包含Controller和ControllerAdvice注解的bean交给SpringMVC来扫描，Spring就不再扫描了，所以要把这两个注解排除在外。-->
+    <context:component-scan base-package="com.zs">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    </context:component-scan>
 
     <!-- 导入数据库配置文件 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -47,7 +61,7 @@
         <property name="typeAliasesPackage" value="com.zs.tmall.pojo" />
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <!--分页插件，目前先注释，后面重构的时候才会使用
+        <!--分页插件，目前先注释，后面重构的时候才会使用-->
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
@@ -58,12 +72,16 @@
                 </bean>
             </array>
         </property>
-        -->
     </bean>
 
     <!--Mybatis的Mapper文件识别-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.zs.tmall.mapper"/>
     </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>
